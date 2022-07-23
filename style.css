@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Edu+VIC+WA+NT+Beginner:wght@600&display=swap");
+
+* {
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+.Devopler-Name {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
+html, body {
+  overflow: hidden;
+  overflow-x: hidden;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  
+}
+
+.board {
+  padding-bottom: 200px;
+  display: grid;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+}
+
+.board.x .cells:not(.x):not(.circle):hover::after,
+.board.x .cells:not(.x):not(.circle):hover::before,
+.board.circle .cells:not(.x):not(.circle):hover::after,
+.board.circle .cells:not(.x):not(.circle):hover::before {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Cells */
+.cells {
+  width: 100px;
+  height: 100px;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.cells.x,
+.cells.circle {
+  cursor: not-allowed;
+}
+
+.cells:nth-child(1),
+.cells:nth-child(2),
+.cells:nth-child(3) {
+  border-top: none;
+}
+
+.cells:nth-child(1),
+.cells:nth-child(4),
+.cells:nth-child(7) {
+  border-left: none;
+}
+
+.cells:nth-child(7),
+.cells:nth-child(8),
+.cells:nth-child(9) {
+  border-bottom: none;
+}
+
+.cells:nth-child(3),
+.cells:nth-child(6),
+.cells:nth-child(9) {
+  border-right: none;
+}
+
+/* X */
+.cells.x::before,
+.cells.x::after,
+.board.x .cells:not(.x):not(.circle):hover::after,
+.board.x .cells:not(.x):not(.circle):hover::before {
+  content: "";
+  height: calc(100px * 0.15);
+  width: calc(100px * 0.9);
+  background-color: white;
+  position: absolute;
+}
+
+.cells.x::before,
+.board.x .cells:not(.x):not(.circle):hover::before {
+  transform: rotate(45deg);
+}
+
+.cells.x::after,
+.board.x .cells:not(.x):not(.circle):hover::after {
+  transform: rotate(-45deg);
+}
+
+/* Circle */
+.cells.circle::before,
+.cells.circle::after,
+.board.circle .cells:not(.x):not(.circle):hover::after,
+.board.circle .cells:not(.x):not(.circle):hover::before {
+  content: "";
+  height: calc(100px * 0.9);
+  width: calc(100px * 0.9);
+  background-color: white;
+  position: absolute;
+  border-radius: 50%;
+}
+
+/*Mensagem de vitoria  */
+.winning-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  flex-direction: column;
+}
+
+.winning-message-button {
+  font-size: 2.5rem;
+  background-color: rgba(65, 185, 131, 1);
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  margin-top: 16px;
+  color: #ffff;
+}
+
+.winning-message-button:hover {
+  color: rgba(65, 185, 131, 1);
+  background-color: #ffff;
+}
+
+.winning-message-text {
+  color: #ffff;
+  font-size: 5rem;
+}
+
+.Show-Winning-message {
+  display: flex;
+}
